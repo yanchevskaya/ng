@@ -21,7 +21,7 @@ public class Ng {
 
  }
 
- public static boolean ifPolindrom(String word){
+ public static boolean ifPolindrom1(String word){
 
      String polindrom = word.replace(" ", "");
 
@@ -29,12 +29,23 @@ public class Ng {
 
      String mordnilop = rev.reverse().toString();
 
-
-     System.out.println(polindrom);
-     System.out.println(mordnilop);
-
      return (polindrom.equalsIgnoreCase(mordnilop));
  }
+
+    // 2й вариант сделала после митинга, подумав, что и правда можно разделить на 2 части)
+
+     public static boolean ifPolindrom2(String word) {
+
+        String poli = word.toLowerCase().replace(" ", "");
+
+        for (int i = 0; i < poli.length() / 2; i++) {
+            if (poli.charAt(i) != poli.charAt(poli.length() - 1 - i)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 
     public static void main(String[] args) {
 
