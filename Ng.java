@@ -15,15 +15,18 @@ public class Ng {
                 } else return false;
 }           return true;
         }
- public static int maxOfNumbers(int[]numbers){
+    
+public static int maxOfNumbers(int a, int b, int c, int d){
 
-     return (Arrays.stream(numbers).max().getAsInt());
+        int[] array = {a, b, c, d};
 
- }
+        return (Arrays.stream(array).max().getAsInt());
+
+    }
 
  public static boolean ifPolindrom1(String word){
 
-     String polindrom = word.replace(" ", "");
+     String polindrom = word.replace("\\W", "");
 
      StringBuilder rev = new StringBuilder(polindrom);
 
@@ -36,7 +39,7 @@ public class Ng {
 
      public static boolean ifPolindrom2(String word) {
 
-        String poli = word.toLowerCase().replace(" ", "");
+        String poli = word.toLowerCase().replace("\\W", "");
 
         for (int i = 0; i < poli.length() / 2; i++) {
             if (poli.charAt(i) != poli.charAt(poli.length() - 1 - i)) {
@@ -45,6 +48,22 @@ public class Ng {
         }
 
         return true;
+    }
+
+    public static int[] multiArray(int[] initialArray) {
+
+        int[] newArray = new int[initialArray.length];
+        for (int i = 0; i < initialArray.length; i++) {
+            int result = 1;
+
+            for (int j = 0; j < initialArray.length; j++) {
+                if (i == j) continue;
+                result = result * initialArray[j];
+            }
+
+            newArray[i] = result;
+        }
+        return newArray;
     }
 
     public static void main(String[] args) {
