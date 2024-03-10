@@ -66,6 +66,46 @@ public static int maxOfNumbers(int a, int b, int c, int d){
         return newArray;
     }
 
+    public static ArrayList<Integer> devide(int[] arrays) {
+
+        ArrayList<Integer> result = new ArrayList<Integer>();
+
+        int one = 0;
+        int two = 0;
+
+        int cutOne = 0;
+        int cutTwo = 0;
+
+        for (int element : arrays) {
+
+            if (element == 0) {
+                one++;
+            } else two++;
+
+        }
+
+        for (int i = 0; i < arrays.length; i++) {
+
+            if (arrays[i] == 0) {
+                cutOne++;
+                if (cutOne > one / 2) {
+                    result.add(i);
+                    cutOne = 1;
+                    cutTwo = 0;
+                }
+            } else {
+                cutTwo++;
+                if (cutTwo > two / 2) {
+                    result.add(i);
+                    cutTwo = 1;
+                    cutOne =0;
+                }
+            }
+            }
+        return result;
+    }
+    }
+
     public static void main(String[] args) {
 
         System.out.println(ifPolindrom("А роза упала на лапу Азора"));
