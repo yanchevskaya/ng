@@ -106,6 +106,68 @@ public static int maxOfNumbers(int a, int b, int c, int d){
     }
     }
 
+public static String romanSum(String one, String two) {
+
+        String[] roman = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"};
+        int[] arabic = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int a = 0;
+        int b = 0;
+        int result = 0;
+        String prefix = "";
+
+        if (isNumeric(one) && isNumeric(two)) {
+            result =  Integer.parseInt(one) + Integer.parseInt(two);
+            return prefix+result;
+        } else {
+
+            for (int i = 0; i < roman.length; i++) {
+
+                if (one.equals(roman[i])) {
+                    a = arabic[i];
+                }
+
+                if (two.equals(roman[i])) {
+                    b = arabic[i];
+                }
+            }
+
+        }
+        result = a + b;
+        if (result==0){
+            System.out.println("Something went wrong");
+        } else if (result > 10) {
+            result = result - 10;
+            prefix = "X";
+        }
+
+        for (int i = 0; i < arabic.length; i++) {
+
+            if (result == arabic[i]) {
+                prefix += roman[i];
+            }
+        }
+        return prefix;
+    }
+
+
+    public static boolean isNumeric(String string) {
+
+        if (string == null || string.equals("")) {
+            return false;
+        }
+
+        try {
+            Integer.parseInt(string);
+            return true;
+        } catch (NumberFormatException e) {
+
+        }
+        return false;
+    }
+
+
+}
+
     public static void main(String[] args) {
 
         System.out.println(ifPolindrom("А роза упала на лапу Азора"));
